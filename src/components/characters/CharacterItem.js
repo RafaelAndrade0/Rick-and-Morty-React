@@ -1,19 +1,19 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const CharacterItem = props => {
-  const { name, img_url } = props.character;
+const CharacterItem = ({ character }) => {
+  const { name, image } = character;
   return (
     <div className='card text-center'>
-      <img
-        src={img_url}
-        alt=''
-        className='round-img'
-        style={{ width: "60px" }}
-      />
+      <img src={image} alt='' className='round-img' style={{ width: "60px" }} />
 
       <h3>{name}</h3>
     </div>
   );
+};
+
+CharacterItem.propTypes = {
+  character: PropTypes.object.isRequired
 };
 
 export default CharacterItem;

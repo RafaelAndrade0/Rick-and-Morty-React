@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import CharacterItem from "./CharacterItem";
+import RickMortyContext from "../../context/rickmorty/rickMortyContext";
 
 const Characters = () => {
-  const characters = [
-    {
-      id: 1,
-      name: "Rick Sanchez",
-      img_url: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-    },
-    {
-      id: 2,
-      name: "Morty Smith",
-      img_url: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-    },
-    {
-      id: 3,
-      name: "Jerry Smith",
-      img_url: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
-    }
-  ];
+  // const characters = [
+  //   {
+  //     id: 1,
+  //     name: "Rick Sanchez",
+  //     img_url: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Morty Smith",
+  //     img_url: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Jerry Smith",
+  //     img_url: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+  //   }
+  // ];
+
+  const rickMortyContext = useContext(RickMortyContext);
+  const { characters } = rickMortyContext;
 
   return (
     <div style={userStyle}>
