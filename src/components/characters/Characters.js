@@ -28,7 +28,7 @@ const Characters = () => {
           </div>
         )}
 
-        <div style={userStyle}>
+        <div className='grid-3'>
           {characters.map(character => {
             return <CharacterItem key={character.id} character={character} />;
           })}
