@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./components/pages/About";
 import Home from "./components/pages/Home";
 import RickMortyState from "./context/rickmorty/RickMortyState";
+import CharacterDetails from "./components/characters/CharacterDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
+                <Route exact path='/details' component={CharacterDetails} />
               </Switch>
             </div>
           </div>

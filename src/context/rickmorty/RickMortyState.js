@@ -25,12 +25,10 @@ const RickMortyState = props => {
     setLoading();
     try {
       const res = await axios.get(
-        `https://rickandmortyapi.com/api/character/?name=${text}&status=alive`
+        `https://rickandmortyapi.com/api/character/?name=${text}`
       );
       dispatch({ type: SEARCH_CHARACTERS, payload: res.data.results });
     } catch (error) {
-      // console.log(error.response.status);
-      // setLoading();
       dispatch({
         type: HANDLE_ERROR
       });
