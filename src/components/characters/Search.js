@@ -5,7 +5,7 @@ import Alert from "../layout/Alert";
 const Search = () => {
   const rickMortyContext = useContext(RickMortyContext);
 
-  const { searchCharacters, clearCharacters } = rickMortyContext;
+  const { searchCharacters } = rickMortyContext;
 
   const [text, setText] = useState("");
 
@@ -15,6 +15,7 @@ const Search = () => {
     e.preventDefault();
     if (text !== "") {
       searchCharacters(text);
+      setText("");
     } else {
       setAlert("You need to type something!");
       setTimeout(() => {
@@ -30,16 +31,6 @@ const Search = () => {
     <div>
       {alert && <Alert msg={alert} />}
 
-      <div className='text-right'>
-        <input
-          type='submit'
-          value='Clear'
-          className='btn btn-light'
-          style={{ margin: "0" }}
-          onClick={clearCharacters}
-        />
-      </div>
-
       <form className='form' onSubmit={onSubmit}>
         <input
           type='text'
@@ -53,6 +44,18 @@ const Search = () => {
           value='Search'
           className='btn btn-dark btn-block'
         />
+
+        {/* {characters.length > 0 && (
+          <div className='text-right'>
+            <input
+              type='submit'
+              value='Clear'
+              className='btn btn-light'
+              style={{ margin: "0" }}
+              onClick={clearCharacters}
+            />
+          </div>
+        )} */}
       </form>
     </div>
   );

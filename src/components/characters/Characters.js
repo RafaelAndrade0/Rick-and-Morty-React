@@ -1,36 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import CharacterItem from "./CharacterItem";
 import RickMortyContext from "../../context/rickmorty/rickMortyContext";
+import Loading from "../layout/Loading";
 
 const Characters = () => {
-  // const characters = [
-  //   {
-  //     id: 1,
-  //     name: "Rick Sanchez",
-  //     img_url: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Morty Smith",
-  //     img_url: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Jerry Smith",
-  //     img_url: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
-  //   }
-  // ];
-
   const rickMortyContext = useContext(RickMortyContext);
-  const { characters } = rickMortyContext;
+  const { characters, loading, noResult, clearCharacters } = rickMortyContext;
 
-  return (
-    <div style={userStyle}>
-      {characters.map(character => {
-        return <CharacterItem key={character.id} character={character} />;
-      })}
-    </div>
-  );
+  if (loading) {
+    return <Loading />;
+  } else {
+    return (
+      <Fragment>
+        {noResult && (
+          <p className='text-center'>No Results....Try searching again!</p>
+        )}
+
+        {characters.length > 0 && (
+          <div className='text-right'>
+            <input
+              type='submit'
+              value='Clear'
+              className='btn btn-light'
+              style={{ margin: "0" }}
+              onClick={clearCharacters}
+            />
+          </div>
+        )}
+
+        <div style={userStyle}>
+          {characters.map(character => {
+            return <CharacterItem key={character.id} character={character} />;
+          })}
+        </div>
+      </Fragment>
+    );
+  }
 };
 
 const userStyle = {
