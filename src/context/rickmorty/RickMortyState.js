@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import RickMortyReducer from "./rickMortyReducer";
 import RickMortyContext from "./rickMortyContext";
 
-import { GET_CHARACTER, SEARCH_CHARACTERS, CLEAN_HARACTERS } from "../types";
+import { GET_CHARACTER, SEARCH_CHARACTERS, CLEAN_CHARACTERS } from "../types";
 import axios from "axios";
 
 const RickMortyState = props => {
@@ -24,9 +24,20 @@ const RickMortyState = props => {
     });
   };
 
+  // Clear Characters
+  const clearCharacters = () => {
+    dispatch({
+      type: CLEAN_CHARACTERS
+    });
+  };
+
   return (
     <RickMortyContext.Provider
-      value={{ characters: state.characters, searchCharacters }}
+      value={{
+        characters: state.characters,
+        searchCharacters,
+        clearCharacters
+      }}
     >
       {props.children}
     </RickMortyContext.Provider>

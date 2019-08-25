@@ -5,7 +5,7 @@ import Alert from "../layout/Alert";
 const Search = () => {
   const rickMortyContext = useContext(RickMortyContext);
 
-  const { searchCharacters } = rickMortyContext;
+  const { searchCharacters, clearCharacters } = rickMortyContext;
 
   const [text, setText] = useState("");
 
@@ -29,6 +29,16 @@ const Search = () => {
   return (
     <div>
       {alert && <Alert msg={alert} />}
+
+      <div className='text-right'>
+        <input
+          type='submit'
+          value='Clear'
+          className='btn btn-light'
+          style={{ margin: "0" }}
+          onClick={clearCharacters}
+        />
+      </div>
 
       <form className='form' onSubmit={onSubmit}>
         <input
